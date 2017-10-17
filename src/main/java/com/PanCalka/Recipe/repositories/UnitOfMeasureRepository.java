@@ -1,0 +1,11 @@
+package com.PanCalka.Recipe.repositories;
+
+import com.PanCalka.Recipe.domain.UnitOfMeasure;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.Optional;
+
+public interface UnitOfMeasureRepository extends CrudRepository<UnitOfMeasure, Long> {
+
+    Optional<UnitOfMeasure> findByDescription(String description);
+}

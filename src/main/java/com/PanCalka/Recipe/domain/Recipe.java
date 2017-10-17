@@ -3,13 +3,11 @@ package com.PanCalka.Recipe.domain;
 
 import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Recipe {
 
