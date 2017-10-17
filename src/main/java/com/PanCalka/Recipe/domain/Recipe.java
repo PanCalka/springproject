@@ -1,16 +1,12 @@
 package com.PanCalka.Recipe.domain;
 
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,6 +25,10 @@ public class Recipe {
 	private String directions;
 	//todo
 	//private Difficulty difficylty;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+	private Set<Ingredient> ingredient;
+
 	@Lob
 	private Byte[] image;
 	
