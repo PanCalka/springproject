@@ -4,7 +4,10 @@ import com.PanCalka.Recipe.domain.Category;
 import com.PanCalka.Recipe.domain.UnitOfMeasure;
 import com.PanCalka.Recipe.repositories.CategoryRepository;
 import com.PanCalka.Recipe.repositories.UnitOfMeasureRepository;
+import com.PanCalka.Recipe.services.RecipeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
@@ -12,20 +15,16 @@ import java.util.Optional;
 @Controller
 public class indexController {
 
-	private CategoryRepository categoryRepository;
-	private UnitOfMeasureRepository unitOfMeasureRepository;
+	private final RecipeService recipeService;
 
-	public indexController(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
-		this.categoryRepository = categoryRepository;
-		this.unitOfMeasureRepository = unitOfMeasureRepository;
+	@Autowired
+	public indexController(RecipeService recipeService) {
+		this.recipeService = recipeService;
 	}
 
 	@RequestMapping({"","/","/index"})
-	public String getIndexPage() {
-		Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
-		Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
-
-		System.out.println("Cat id is " + categoryOptional.get().getId());
+	public String getIndexPage(Model model) {
+		model.addAttribute("recipes", recipeService.getRecipe());
 
 		return "index";
 	}
