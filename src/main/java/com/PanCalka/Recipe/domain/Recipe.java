@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import lombok.*;
 
+import java.awt.*;
+import java.security.KeyStore;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
@@ -22,7 +24,7 @@ public class Recipe {
 	private String directions;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-	private Set<Ingredient> ingredients = new HashSet<>();
+	private Set<Ingredient> ingredient= new HashSet<>();
 
 	@Lob
 	private Byte[] image;
@@ -102,12 +104,12 @@ public class Recipe {
 		this.directions = directions;
 	}
 
-	public Set<Ingredient> getIngredients() {
-		return ingredients;
+	public Set<Ingredient> getIngredient() {
+		return ingredient;
 	}
 
-	public void setIngredients(Set<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+	public void setIngredient(Set<Ingredient> ingredient) {
+		this.ingredient = ingredient;
 	}
 
 	public Byte[] getImage() {

@@ -89,16 +89,23 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         random.setCookTime(10);
         random.setPrepTime(10);
         random.setServings(5);
+        random.setSource("internet");
         random.setDifficulty(Difficulty.EASY);
-        random.setDescription("Some random description to fill");
+        random.setUrl("www.some-url.com");
+        random.setDescription("Jummy pancake");
         Notes randomNotes = new Notes();
-        randomNotes.setRecipeNotes("Futher random text");
+        randomNotes.setRecipeNotes("Eat it fast");
+        random.setDirections(
+                "    In a large bowl, sift together the flour, baking powder, salt and sugar. Make a well in the center " +
+                        "and pour in the milk, egg and melted butter; mix until smooth.\n" +
+                        "  \n  Heat a lightly oiled griddle or frying pan over medium high heat. Pour or scoop the batter onto the griddle, " +
+                        "using approximately 1/4 cup for each pancake. Brown on both sides and serve hot.\n");
 
         random.setNotes(randomNotes);
 
-        random.getIngredients().add(new Ingredient("jummy recipe", new BigDecimal(2), eachUom, random));
-        random.getIngredients().add(new Ingredient("jummy recipe1", new BigDecimal(3), pintUom, random));
-        random.getIngredients().add(new Ingredient("jummy recipe2", new BigDecimal(4), teaspoon, random));
+        random.getIngredient().add(new Ingredient("banana", new BigDecimal(2), eachUom, random));
+        random.getIngredient().add(new Ingredient("chocolate", new BigDecimal(3), pintUom, random));
+        random.getIngredient().add(new Ingredient("pancake", new BigDecimal(4), eachUom , random));
 
         random.getCategories().add(americanCategory);
         recipes.add(random);
