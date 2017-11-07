@@ -1,5 +1,7 @@
 package com.PanCalka.Recipe.services;
 
+import com.PanCalka.Recipe.converters.RecipeCommandToRecipe;
+import com.PanCalka.Recipe.converters.RecipeToRecipeCommand;
 import com.PanCalka.Recipe.domain.Recipe;
 import com.PanCalka.Recipe.repositories.RecipeRepository;
 import org.junit.Before;
@@ -22,11 +24,17 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
     @Test
     public void getRecipeByIdTest() throws Exception {
