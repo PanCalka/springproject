@@ -48,7 +48,7 @@ public class RecipeControllerTest {
 
         mockMvc.perform(get("/recipe/1/show"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("recipes/show"));
+                .andExpect(view().name("recipe/show"));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class RecipeControllerTest {
 
         mockMvc.perform(get("/recipe/new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("recipes/recipeform"))
+                .andExpect(view().name("recipe/recipeform"))
                 .andExpect(model().attributeExists("recipe"));
     }
 
@@ -86,7 +86,7 @@ public class RecipeControllerTest {
 
         mockMvc.perform(get("/recipe/1/update"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("recipes/recipeform"))
+                .andExpect(view().name("recipe/recipeform"))
                 .andExpect(model().attributeExists("recipe"));
     }
 
