@@ -101,7 +101,7 @@ public class RecipeCommandToRecipeTest {
         assertEquals(URL, recipe.getUrl());
         assertEquals(NOTES_ID, recipe.getNotes().getId());
         assertEquals(2, recipe.getCategories().size());
-        assertEquals(2, recipe.getIngredient().size());
+        assertEquals(2, recipe.getIngredients().size());
     }
 
 }
