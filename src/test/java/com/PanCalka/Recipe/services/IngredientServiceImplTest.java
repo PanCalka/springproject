@@ -95,7 +95,7 @@ public class IngredientServiceImplTest {
 
         Recipe savedRecipe = new Recipe();
         savedRecipe.addIngredient(new Ingredient());
-        savedRecipe.getIngredients().iterator().next().setId(3L);
+        savedRecipe.getIngredient().iterator().next().setId(3L);
 
         when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
         when(recipeRepository.save(any())).thenReturn(savedRecipe);

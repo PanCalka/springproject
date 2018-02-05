@@ -103,9 +103,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         random.setNotes(randomNotes);
 
-        random.getIngredients().add(new Ingredient("banana", new BigDecimal(2), eachUom, random));
-        random.getIngredients().add(new Ingredient("chocolate", new BigDecimal(3), pintUom, random));
-        random.getIngredients().add(new Ingredient("pancake", new BigDecimal(4), eachUom , random));
+        random.getIngredient().add(new Ingredient("banana", new BigDecimal(2), eachUom, random));
+        random.getIngredient().add(new Ingredient("chocolate", new BigDecimal(3), pintUom, random));
+        random.getIngredient().add(new Ingredient("pancake", new BigDecimal(4), eachUom , random));
 
         random.getCategories().add(americanCategory);
         recipes.add(random);
