@@ -2,9 +2,12 @@ package com.PanCalka.Recipe.controllers;
 
 import com.PanCalka.Recipe.commands.RecipeCommand;
 import com.PanCalka.Recipe.services.RecipeService;
+import javassist.NotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RecipeController {
@@ -16,7 +19,7 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/{id}/show")
-    public String showById(@PathVariable String id, Model model) {
+    public String showById(@PathVariable String id, Model model) throws NotFoundException {
 
         model.addAttribute("recipe", recipeService.findById(new Long(id)));
 
@@ -46,5 +49,15 @@ public class RecipeController {
     public String deleteById(@PathVariable String id){
         recipeService.deleteById(Long.valueOf(id));
         return "redirect:/";
+    }
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(com.PanCalka.Recipe.exceptions.NotFoundException.class)
+    public ModelAndView handleNotFound(){
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("404error");
+
+        return modelAndView;
     }
 }

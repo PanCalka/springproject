@@ -92,7 +92,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         random.setSource("internet");
         random.setDifficulty(Difficulty.EASY);
         random.setUrl("www.some-url.com");
-        random.setDescription("Jummy pancake");
+        random.setDescription("Yummy pancake");
         Notes randomNotes = new Notes();
         randomNotes.setRecipeNotes("Eat it fast");
         random.setDirections(

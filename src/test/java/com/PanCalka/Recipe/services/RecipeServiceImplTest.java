@@ -4,6 +4,7 @@ import com.PanCalka.Recipe.converters.RecipeCommandToRecipe;
 import com.PanCalka.Recipe.converters.RecipeToRecipeCommand;
 import com.PanCalka.Recipe.domain.Recipe;
 import com.PanCalka.Recipe.repositories.RecipeRepository;
+import javassist.NotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -13,6 +14,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
@@ -36,6 +38,17 @@ public class RecipeServiceImplTest {
 
         recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
+    @Test
+    public void shouldNotFoundRecipeById() {
+        //when
+        Optional<Recipe> recipeOptional = Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        //then
+        assertThatThrownBy(() ->  recipeService.findById(1L))
+        .isExactlyInstanceOf(com.PanCalka.Recipe.exceptions.NotFoundException.class);
+    }
+
     @Test
     public void getRecipeByIdTest() throws Exception {
         Recipe recipe = new Recipe();

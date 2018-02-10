@@ -5,6 +5,7 @@ import com.PanCalka.Recipe.converters.RecipeCommandToRecipe;
 import com.PanCalka.Recipe.converters.RecipeToRecipeCommand;
 import com.PanCalka.Recipe.domain.Recipe;
 import com.PanCalka.Recipe.repositories.RecipeRepository;
+import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +44,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new com.PanCalka.Recipe.exceptions.NotFoundException("Recipe Not Found!");
         }
 
         return recipeOptional.get();
