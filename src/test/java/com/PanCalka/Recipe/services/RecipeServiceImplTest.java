@@ -39,7 +39,7 @@ public class RecipeServiceImplTest {
         recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
     @Test
-    public void shouldNotFoundRecipeById() {
+    public void shouldThrowNotFoundWhileRecipeById() {
         //when
         Optional<Recipe> recipeOptional = Optional.empty();
         when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);

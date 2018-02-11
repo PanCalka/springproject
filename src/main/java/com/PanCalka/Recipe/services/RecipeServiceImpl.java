@@ -44,7 +44,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new com.PanCalka.Recipe.exceptions.NotFoundException("Recipe Not Found!");
+            throw new com.PanCalka.Recipe.exceptions.NotFoundException("Recipe Not Found! For id value " + l.toString());
         }
 
         return recipeOptional.get();

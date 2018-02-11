@@ -36,7 +36,9 @@ public class RecipeControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         controller = new RecipeController(recipeService);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
     }
 
     @Test
@@ -58,8 +60,18 @@ public class RecipeControllerTest {
         when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
 
         mockMvc.perform(get("/recipe/1/show"))
-                .andExpect(status().isNotFound())
+                .andExpect(status().isBadRequest())
                 .andExpect(view().name("404error"));
+    }
+
+    @Test
+    public void testGetRecipeIllegalArg() throws Exception {
+
+        when(recipeService.findById(anyLong())).thenThrow(IllegalArgumentException.class);
+
+        mockMvc.perform(get("/recipe/arg/show"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("illegalError"));
     }
 
     @Test
