@@ -88,6 +88,7 @@ public class RecipeControllerTest {
     public void testPostNewRecipeForm() throws Exception {
         RecipeCommand command = new RecipeCommand();
         command.setId(2L);
+        command.setDirections("test");
 
         when(recipeService.saveRecipeCommand(any())).thenReturn(command);
 

@@ -39,7 +39,7 @@ public class RecipeCommand {
     @URL
     private String url;
 
-    @NotBlank
+    @Min(3)
     private String directions;
 
     private Set<IngredientCommand> ingredients = new HashSet<>();
