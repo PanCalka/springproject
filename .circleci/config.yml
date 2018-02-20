@@ -40,9 +40,5 @@ jobs:
       # run tests!
       - run: mvn integration-test cobertura:cobertura
 
-      #add path to display coverage
-      - store_test_result:
-         paths: target/surfire_report
-
       # run codecov to measure code coverage
       - run: bash <(curl -s https://codecov.io/bash)
