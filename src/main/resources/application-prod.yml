@@ -3,9 +3,10 @@ spring:
     url: jdbc:mysql://localhost:3306/sfg_prod
     username: sfg_prod_user
     password: panCalka
+    platform: mysql
 jpa:
   hibernate:
       ddl-auto: validate
-      database-platform: org.hibernate.dialect.mySQL5InnoDBDialect
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
       database: mysql
       show-sql: false

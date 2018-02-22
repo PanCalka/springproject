@@ -7,6 +7,7 @@ import com.PanCalka.Recipe.repositories.UnitOfMeasureRepository;
 import lombok.Getter;
 import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import sun.applet.AppletEvent;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Component
+@Profile("default")
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;

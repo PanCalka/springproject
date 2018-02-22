@@ -3,17 +3,18 @@ spring:
     url: jdbc:mysql://localhost:3306/sfg_dev
     username: sfg_dev_user
     password: panCalka
+    platform: mysql
 jpa:
   hibernate:
       ddl-auto: validate
       database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
       database: mysql
       show-sql: true
-  properties:
-    javax:
-      persistance:
-        schema-generation:
-          create-source: metadata
-          scripts:
-          action: create
-          create-target: panCalka_database_create.sql
+#  properties:
+#    javax:
+#      persistance:
+#        schema-generation:
+#          create-source: metadata
+#          scripts:
+#          action: create
+#          create-target: panCalka_database_create.sql
